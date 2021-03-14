@@ -953,62 +953,6 @@
 			"NoRandomCrit": 1
 		}
 	},
-	"equalizer": 
-	{
-		"Name": "Equalizer",
-		"Class": "melee",
-		"Based on": "shovel",
-		"Fire sound": "rafradek_tf2_weapons:weapon.fire.equalizer",
-		"Hit sound": "rafradek_tf2_weapons:weapon.hit.bottle",
-		"Render": "rafradek_tf2_weapons:market_gardener",
-		"Drop chance": 0.11,
-		"Cost": 9,
-		"Stock": false,
-		"Attributes": 
-		{
-			"MedicHealingDecreased": 0.1,
-			"DamageHealthBonus": 1.65,
-			"DestroyBlocks": 1.27
-		}
-	},
-	"escapeplan": 
-	{
-		"Name": "Escape Plan",
-		"Class": "melee",
-		"Based on": "shovel",
-		"Fire sound": "rafradek_tf2_weapons:weapon.fire.equalizer",
-		"Render": "rafradek_tf2_weapons:market_gardener",
-		"Drop chance": 0.11,
-		"Cost": 9,
-		"Stock": false,
-		"Attributes": 
-		{
-			"MoveSpeedHealthBonus": 0.1,
-			"MarkForDeathSelf": 1,
-			"MedicHealingDecreased": 0.1,
-			"DestroyBlocks": 1.27
-		}
-	},
-	"paintrain": 
-	{
-		"Name": "Pain Train",
-		"Class": "melee",
-		"Based on": "shovel",
-		"Slot": 
-		{
-			"soldier": 2,
-			"demoman": 2
-		},
-		"Render": "rafradek_tf2_weapons:market_gardener",
-		"Drop chance": 0.11,
-		"Cost": 9,
-		"Stock": false,
-		"Attributes": 
-		{
-			"IncreaseCaptureRate": 1,
-			"BulletResistPenalty": 1.1
-		}
-	},
 	"fireaxe": 
 	{
 		"Name": "Fire Axe",
@@ -1173,7 +1117,7 @@
 	},
 	"ubersaw": 
 	{
-		"Name": "Übersaw",
+		"Name": "ï¿½bersaw",
 		"Class": "melee",
 		"Based on": "bonesaw",
 		"Render": "rafradek_tf2_weapons:ubersaw",
@@ -3350,23 +3294,6 @@
 			"SelfPushForcePenalty": 0.65
 		}
 	},
-	"manmelter":
-	{
-		"Name": "Scorch Shot",
-		"Class": "projectile",
-		"Based on": "flaregun",
-		"Render": "rafradek_tf2_weapons:detonator",
-		"Fire sound": "rafradek_tf2_weapons:weapon.fire.manmelter",
-		"Special 1 sound": "rafradek_tf2_weapons:weapon.altfire.manmelter",
-		"Ammo type": 0,
-		"Description": "Does not require ammo",
-		"Attributes": 
-		{
-			"BurnOnHit": 6,
-			"ProjectileSpeedBonus": 1.5,
-			"Extinguish": 1
-		}
-	},
 	"gaspasser":
 	{
 		"Class": "gas",
@@ -3651,25 +3578,6 @@
 			"CritMakesLaugh": 1
 		}
 	},
-	"frontierjustice": 
-	{
-		"Class": "bullet",
-		"Based on": "shotgun",
-		"Slot": 
-		{
-			"engineer": 0
-		},
-		"Render": "rafradek_tf2_weapons:panic_attack",
-		"Fire sound": "rafradek_tf2_weapons:weapon.fire.frontierjustice",
-		"Cost": 12,
-		"Stock": false,
-		"Attributes": 
-		{
-			"ClipSizePenalty": 0.5,
-			"NoRandomCrits": 1,
-			"RevengeCrits": 1
-		}
-	},
 	"shortcircuit": 
 	{
 		"Class": "shortcircuit",
@@ -3893,52 +3801,6 @@
 			"NoFlinchCharged": 1,
 			"KnockbackReductionAim": 1,
 			"HealthRegen": 0.4
-		}
-	},
-	"letranger": 
-	{
-		"Class": "bullet",
-		"Based on": "revolver",
-		"Render": "rafradek_tf2_weapons:ambassador",
-		"Fire sound": "rafradek_tf2_weapons:weapon.fire.letranger",
-		"Stock": false,
-		"Cost": 18,
-		"Attributes": 
-		{
-			"DamagePenalty": 0.8,
-			"CloakOnHit": 0.15,
-			"CloakDurationGlobalBonus": 1.4
-		}
-	},
-	"enforcer": 
-	{
-		"Class": "bullet",
-		"Based on": "revolver",
-		"Render": "rafradek_tf2_weapons:ambassador",
-		"Fire sound": "rafradek_tf2_weapons:weapon.fire.enforcer",
-		"Stock": false,
-		"Cost": 36,
-		"Attributes": 
-		{
-			"DamageWhenDisguisedBonus": 1.2,
-			"PierceResistances": 1,
-			"FireRatePenalty": 1.2,
-			"NoRandomCrits": 1
-		}
-	},
-	"diamondback": 
-	{
-		"Class": "bullet",
-		"Based on": "revolver",
-		"Render": "rafradek_tf2_weapons:ambassador",
-		"Fire sound": "rafradek_tf2_weapons:weapon.fire.diamondback",
-		"Stock": false,
-		"Cost": 18,
-		"Attributes": 
-		{
-			"DamagePenalty": 0.85,
-			"CritOnKillSap": 1,
-			"NoRandomCrits": 1
 		}
 	},
 	"conniverskunai":
