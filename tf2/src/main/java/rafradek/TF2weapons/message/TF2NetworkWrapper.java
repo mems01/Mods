@@ -41,7 +41,7 @@ public class TF2NetworkWrapper extends SimpleNetworkWrapper {
     {
         try {
 			registerMessage(messageHandler.newInstance(), requestMessageType, discriminator, side, useUdp);
-		} catch (Exception e) {
+		} catch (Exception ignored) {
 			
 		}
     }
