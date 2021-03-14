@@ -1,7 +1,5 @@
 package rafradek.TF2weapons.message;
 
-import java.util.List;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraftforge.fml.common.network.internal.FMLNetworkHandler;
@@ -13,7 +11,8 @@ import rafradek.TF2weapons.TF2weapons;
 import rafradek.TF2weapons.client.gui.GuiTeamSelect;
 import rafradek.TF2weapons.message.TF2Message.ShowGuiMessage;
 import rafradek.TF2weapons.util.TF2Util;
-import scala.actors.threadpool.Arrays;
+
+import java.util.List;
 
 public class TF2ShowGuiHandler implements IMessageHandler<TF2Message.ShowGuiMessage, IMessage> {
 
@@ -23,9 +22,6 @@ public class TF2ShowGuiHandler implements IMessageHandler<TF2Message.ShowGuiMess
 			if (message.id != 99)
 				FMLNetworkHandler.openGui(ctx.getServerHandler().player, TF2weapons.instance, message.id,
 						ctx.getServerHandler().player.world, 0, 0, 0);
-			else {
-	
-			}
 		}
 		else {
 			if (message.id == 100) {
