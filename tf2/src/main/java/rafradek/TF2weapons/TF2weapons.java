@@ -971,8 +971,7 @@ public class TF2weapons {
 		network.registerMessage(TF2PlayerCapabilityHandler.class, TF2Message.PlayerCapabilityMessage.class, 22, Side.CLIENT, false);
 		network.registerMessage(TF2GuiConfigHandler.class, TF2Message.GuiConfigMessage.class, 23, Side.CLIENT, false);
 		network.registerMessage(TF2GuiConfigHandler.class, TF2Message.GuiConfigMessage.class, 24, Side.SERVER, false);
-		network.registerMessage(TF2ShowGuiHandler.class, TF2Message.ShowGuiMessage.class, 25, Side.CLIENT, false);
-		network.registerMessage(TF2ShowGuiHandler.class, TF2Message.ShowGuiMessage.class, 26, Side.SERVER, false);
+		network.registerMessage(TF2ShowGuiHandler.class, TF2Message.ShowGuiMessage.class, 9, Side.SERVER, false);
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new IGuiHandler() {
 
 			@Override
