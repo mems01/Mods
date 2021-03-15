@@ -989,7 +989,6 @@ public class TF2weapons {
         network.registerMessage(TF2PropertyHandler.class, TF2Message.PropertyMessage.class, 19, Side.CLIENT, false);
         network.registerMessage(TF2CapabilityHandler.class, TF2Message.CapabilityMessage.class, 6, Side.CLIENT, false);
         network.registerMessage(TF2WeaponDataHandler.class, TF2Message.WeaponDataMessage.class, 8, Side.CLIENT, false);
-        network.registerMessage(TF2ShowGuiHandler.class, TF2Message.ShowGuiMessage.class, 9, Side.SERVER, false);
         network.registerMessage(TF2WearableChangeHandler.class, TF2Message.WearableChangeMessage.class, 10, Side.CLIENT, false);
         network.registerMessage(TF2WeaponDropHandler.class, TF2Message.WeaponDroppedMessage.class, 12, Side.CLIENT, true);
         network.registerMessage(TF2ContractHandler.class, TF2Message.ContractMessage.class, 13, Side.CLIENT, false);
@@ -1002,6 +1001,7 @@ public class TF2weapons {
         network.registerMessage(TF2PlayerCapabilityHandler.class, TF2Message.PlayerCapabilityMessage.class, 22, Side.CLIENT, false);
         network.registerMessage(TF2GuiConfigHandler.class, TF2Message.GuiConfigMessage.class, 23, Side.CLIENT, false);
         network.registerMessage(TF2GuiConfigHandler.class, TF2Message.GuiConfigMessage.class, 24, Side.SERVER, false);
+        network.registerMessage(TF2ShowGuiHandler.class, TF2Message.ShowGuiMessage.class, 26, Side.SERVER, false);
         NetworkRegistry.INSTANCE.registerGuiHandler(this, new IGuiHandler() {
 
             @Override
