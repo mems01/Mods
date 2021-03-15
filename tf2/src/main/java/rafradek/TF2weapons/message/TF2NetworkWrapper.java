@@ -36,26 +36,26 @@ public class TF2NetworkWrapper extends SimpleNetworkWrapper {
 		
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public <REQ extends IMessage, REPLY extends IMessage> void registerMessage(Class<? extends IMessageHandler<REQ, REPLY>> messageHandler, Class<REQ> requestMessageType, int discriminator, Side side, boolean useUdp)
-    {
-        try {
+	{
+		try {
 			registerMessage(messageHandler.newInstance(), requestMessageType, discriminator, side, useUdp);
-		} catch (Exception ignored) {
-			
+		} catch (Exception e) {
+
 		}
-    }
-	
+	}
+
 	public <REQ extends IMessage, REPLY extends IMessage> void registerMessage(IMessageHandler<? super REQ, ? extends REPLY> messageHandler, Class<REQ> requestMessageType, int discriminator, Side side, boolean useUdp)
-    {
-        super.registerMessage(messageHandler, requestMessageType, discriminator, side);
-        if(useUdp) {
-        	handlerList.put(requestMessageType, (IMessageHandler<IMessage, IMessage>) messageHandler);
-        	messages[discriminator] = requestMessageType;
-        	discriminators.put(requestMessageType, (byte)discriminator);
-        	
-        }
-    }
+	{
+		super.registerMessage(messageHandler, requestMessageType, discriminator, side);
+		if(useUdp) {
+			handlerList.put(requestMessageType, (IMessageHandler<IMessage, IMessage>) messageHandler);
+			messages[discriminator] = requestMessageType;
+			discriminators.put(requestMessageType, (byte)discriminator);
+
+		}
+	}
 	
 	public void sendToAll(IMessage message)
     {
