@@ -641,9 +641,7 @@ public class TF2weapons {
 		ForgeRegistries.ITEMS.register(itemBossSpawn = new ItemBossSpawner().setCreativeTab(tabspawnertf2).setUnlocalizedName("boss").setRegistryName(TF2weapons.MOD_ID + ":boss_spawner"));
 		ForgeRegistries.ITEMS.register(itemDoorController = new ItemDoorController().setCreativeTab(tabutilitytf2).setUnlocalizedName("doorcontroller")
 				.setRegistryName(TF2weapons.MOD_ID + ":door_controller"));
-		Iterator<String> iterator = MapList.weaponClasses.keySet().iterator();
-		while (iterator.hasNext()) {
-			String name = iterator.next();
+		for (String name : MapList.weaponClasses.keySet()) {
 			ForgeRegistries.ITEMS.register(MapList.weaponClasses.get(name).setRegistryName(new ResourceLocation(MOD_ID, "" + name.toLowerCase())));
 		}
 
