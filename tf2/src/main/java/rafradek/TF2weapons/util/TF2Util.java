@@ -554,8 +554,6 @@ public class TF2Util {
 
 	/**
 	 * @param x coordinates of point to be tested 
-	 * @param t coordinates of apex point of cone
-	 * @param b coordinates of center of basement circle
 	 * @param aperture in radians
 	 */
 	static public boolean isLyingInCone(Vec3d x, Vec3d start, Vec3d end, 

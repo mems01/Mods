@@ -1,13 +1,7 @@
 package rafradek.TF2weapons.common;
 
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
-
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -21,29 +15,15 @@ import rafradek.TF2weapons.TF2ConfigVars;
 import rafradek.TF2weapons.TF2weapons;
 import rafradek.TF2weapons.entity.mercenary.EntityTF2Character;
 import rafradek.TF2weapons.entity.projectile.EntityProjectileSimple;
-import rafradek.TF2weapons.item.IItemNoSwitch;
-import rafradek.TF2weapons.item.ItemAirblast;
-import rafradek.TF2weapons.item.ItemBackpack;
-import rafradek.TF2weapons.item.ItemBulletWeapon;
-import rafradek.TF2weapons.item.ItemChargingTarge;
-import rafradek.TF2weapons.item.ItemCloak;
-import rafradek.TF2weapons.item.ItemFlameThrower;
-import rafradek.TF2weapons.item.ItemFromData;
-import rafradek.TF2weapons.item.ItemJetpack;
-import rafradek.TF2weapons.item.ItemKnife;
-import rafradek.TF2weapons.item.ItemMedigun;
-import rafradek.TF2weapons.item.ItemMinigun;
-import rafradek.TF2weapons.item.ItemPDA;
-import rafradek.TF2weapons.item.ItemParachute;
-import rafradek.TF2weapons.item.ItemProjectileWeapon;
-import rafradek.TF2weapons.item.ItemSniperRifle;
-import rafradek.TF2weapons.item.ItemSoldierBackpack;
-import rafradek.TF2weapons.item.ItemUsable;
-import rafradek.TF2weapons.item.ItemWeapon;
-import rafradek.TF2weapons.item.ItemWrench;
+import rafradek.TF2weapons.item.*;
 import rafradek.TF2weapons.util.PropertyType;
 import rafradek.TF2weapons.util.TF2Util;
 import rafradek.TF2weapons.util.WeaponData;
+
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class TF2Attribute {
 
@@ -142,12 +122,12 @@ public class TF2Attribute {
 	public static final Predicate<ItemStack> GRENADE = input -> ItemFromData.isSameType(input, "grenadelauncher");
 	public static final Predicate<ItemStack> KNIFE = input -> input.getItem() instanceof ItemKnife;
 	
-	public static enum Type {
-		PERCENTAGE, INVERTED_PERCENTAGE, ADDITIVE;
+	public enum Type {
+		PERCENTAGE, INVERTED_PERCENTAGE, ADDITIVE
 	}
 
-	public static enum State {
-		POSITIVE, NEGATIVE, NEUTRAL, HIDDEN;
+	public enum State {
+		POSITIVE, NEGATIVE, NEUTRAL, HIDDEN
 	}
 	public TF2Attribute(int id, String name, String effect, Type typeOfValue, float defaultValue, State state) {
 		this.id = id;
@@ -532,9 +512,9 @@ public class TF2Attribute {
 	public String getTranslatedString(float value, boolean withColor) {
 		String valueStr = String.valueOf(value);
 		if (this.typeOfValue == Type.PERCENTAGE)
-			valueStr = Integer.toString(Math.round((value - 1) * 100)) + "%";
+			valueStr = Math.round((value - 1) * 100) + "%";
 		else if (this.typeOfValue == Type.INVERTED_PERCENTAGE)
-			valueStr = Integer.toString(Math.round((1 - value) * 100)) + "%";
+			valueStr = Math.round((1 - value) * 100) + "%";
 		else if (this.typeOfValue == Type.ADDITIVE)
 			valueStr = new DecimalFormat("##.#").format(value);
 
@@ -543,7 +523,7 @@ public class TF2Attribute {
 					: (this.state == State.NEGATIVE ? TextFormatting.RED : TextFormatting.WHITE);
 			return color + I18n.format("weaponAttribute." + this.name, new Object[] { valueStr });
 		} else
-			return I18n.format("weaponAttribute." + this.name, new Object[] { valueStr });
+			return I18n.format("weaponAttribute." + this.name, valueStr);
 
 	}
 
