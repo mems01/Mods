@@ -1097,80 +1097,62 @@ public class TF2EventsCommon {
 
     @SubscribeEvent
     public void livingUpdate(final LivingEvent.LivingUpdateEvent event) {
-		event.getEntity().getEntityWorld().profiler.startSection("TF2TickEvent");
-		final EntityLivingBase living = event.getEntityLiving();
-		if (living.hasCapability(TF2weapons.INVENTORY_CAP, null)) {
-			for (int i = 0; i < 3; i++) {
-				ItemStack stack = living.getCapability(TF2weapons.INVENTORY_CAP, null).getStackInSlot(i);
-				if(!stack.isEmpty() && stack.getItem() instanceof ItemWearable)
-					((ItemWearable)stack.getItem()).onUpdateWearing(stack, living.world, living);
-				else if(!stack.isEmpty() && stack.getItem() instanceof ItemBackpack)
-					((ItemBackpack)stack.getItem()).onArmorTickAny(living.world, living, stack);
-			}
-			if (!living.world.isRemote && living.ticksExisted % 2 == 0)
-				living.getCapability(TF2weapons.INVENTORY_CAP, null).updateSlots();
-		}
-		if(living.hasCapability(TF2weapons.PLAYER_CAP, null))
-			living.getCapability(TF2weapons.PLAYER_CAP, null).tick();
-		if (living.isEntityAlive() && (living.hasCapability(TF2weapons.WEAPONS_CAP, null))) {
+        event.getEntity().getEntityWorld().profiler.startSection("TF2TickEvent");
+        final EntityLivingBase living = event.getEntityLiving();
+        if (living.hasCapability(Objects.requireNonNull(TF2weapons.INVENTORY_CAP), null)) {
+            for (int i = 0; i < 3; i++) {
+                ItemStack stack = living.getCapability(Objects.requireNonNull(TF2weapons.INVENTORY_CAP), null).getStackInSlot(i);
+                if (!stack.isEmpty() && stack.getItem() instanceof ItemWearable)
+                    ((ItemWearable) stack.getItem()).onUpdateWearing(stack, living.world, living);
+                else if (!stack.isEmpty() && stack.getItem() instanceof ItemBackpack)
+                    ((ItemBackpack) stack.getItem()).onArmorTickAny(living.world, living, stack);
+            }
+            if (!living.world.isRemote && living.ticksExisted % 2 == 0)
+                Objects.requireNonNull(living.getCapability(TF2weapons.INVENTORY_CAP, null)).updateSlots();
+        }
+        if (living.hasCapability(Objects.requireNonNull(TF2weapons.PLAYER_CAP), null))
+            Objects.requireNonNull(living.getCapability(TF2weapons.PLAYER_CAP, null)).tick();
+        if (living.isEntityAlive() && (living.hasCapability(TF2weapons.WEAPONS_CAP, null))) {
 
-			//long nanoTickStart=System.nanoTime();
-			final WeaponsCapability cap = living.getCapability(TF2weapons.WEAPONS_CAP, null);
-			cap.tick();
+            //long nanoTickStart=System.nanoTime();
+            final WeaponsCapability cap = living.getCapability(TF2weapons.WEAPONS_CAP, null);
+            cap.tick();
 
+        }
 
+        if (living.getRevengeTarget() != null && living.getRevengeTarget().hasCapability(TF2weapons.WEAPONS_CAP, null)
+                && living.getRevengeTarget().getCapability(TF2weapons.WEAPONS_CAP, null).invisTicks >= 45) {
+            living.setRevengeTarget(null);
+        }
 
-			//if(!living.world.isRemote)
-			//	tickTimeLiving[TF2weapons.server.getTickCounter()%20]+=System.nanoTime()-nanoTickStart;
-		}
+        if (living instanceof EntityLiving && ((EntityLiving) living).getAttackTarget() != null) {
+            if (living.getEntityData().hasKey("TF2AM") && living.getEntityWorld().getTotalWorldTime() - living.getEntityData().getInteger("TF2AM") > 360) {
+                living.getEntityData().removeTag("TF2AM");
+                living.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).removeModifier(TF2Util.FOLLOW_MODIFIER);
+            } else if (((EntityLiving) living).getAttackTarget().hasCapability(TF2weapons.WEAPONS_CAP, null)
+                    && ((EntityLiving) living).getAttackTarget().getCapability(TF2weapons.WEAPONS_CAP, null).invisTicks >= 45) {
+                ((EntityLiving) living).setAttackTarget(null);
+            }
+        }
 
-		if (living.getRevengeTarget() != null && living.getRevengeTarget().hasCapability(TF2weapons.WEAPONS_CAP, null)
-				&& living.getRevengeTarget().getCapability(TF2weapons.WEAPONS_CAP, null).invisTicks >= 20) {
-			living.setRevengeTarget(null);
-		}
-
-		if (living instanceof EntityLiving && ((EntityLiving) living).getAttackTarget() != null
-				&& ((EntityLiving) living).getAttackTarget().hasCapability(TF2weapons.WEAPONS_CAP, null)
-				&& ((EntityLiving) living).getAttackTarget().getCapability(TF2weapons.WEAPONS_CAP, null).invisTicks >= 20) {
-			((EntityLiving) living).setAttackTarget(null);
-		}
-
-		if (living.getDataManager().get(ENTITY_OVERHEAL) == -1) {
-			living.getDataManager().set(ENTITY_OVERHEAL, 0F);
-			living.setAbsorptionAmount(0);
-		}
-		if (living.getDataManager().get(ENTITY_OVERHEAL) > 0) {
-			if (living.world.isRemote) {
-				living.setAbsorptionAmount(living.getDataManager().get(ENTITY_OVERHEAL));
-			}
-			living.setAbsorptionAmount(living.getAbsorptionAmount() - living.getMaxHealth() * 0.001666f);
-			if (!living.world.isRemote && living.ticksExisted%4==0)
-				if (living.getAbsorptionAmount() <= 0) {
-					living.getDataManager().set(ENTITY_OVERHEAL, -1f);
-					//living.getEntityData().setFloat("Overheal", -1f);
-				} else {
-					living.getDataManager().set(ENTITY_OVERHEAL, living.getAbsorptionAmount());
-				}
-		}
-		living.world.profiler.endSection();
-		/*if (living.getActivePotionEffect(TF2weapons.uber)!=null && !(living.getHeldItem(EnumHand.MAIN_HAND) != null
-				&& living.getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof ItemMedigun && living.getHeldItem(EnumHand.MAIN_HAND).getTagCompound().getBoolean("Activated"))) {
-			List<EntityLivingBase> list = living.world.getEntitiesWithinAABB(EntityLivingBase.class,
-					new AxisAlignedBB(living.posX - 8, living.posY - 8, living.posZ - 8, living.posX + 8, living.posY + 8, living.posZ + 8), new Predicate<EntityLivingBase>() {
-						@Override
-						public boolean apply(EntityLivingBase input) {
-							// TODO Auto-generated method stub
-							return input.world.getEntityByID(
-									input.getCapability(TF2weapons.WEAPONS_CAP, null) != null ? input.getCapability(TF2weapons.WEAPONS_CAP, null).healTarget : -1) == living
-									&& input.getHeldItem(EnumHand.MAIN_HAND).getTagCompound().getBoolean("Activated");
-						}
-					});
-			boolean isOK = !list.isEmpty();
-			if (!isOK) {
-				living.getEntityData().setBoolean("Ubercharge", false);
-			}
-		}*/
-	}
+        if (living.getDataManager().get(ENTITY_OVERHEAL) == -1) {
+            living.getDataManager().set(ENTITY_OVERHEAL, 0F);
+            living.setAbsorptionAmount(0);
+        }
+        if (living.getDataManager().get(ENTITY_OVERHEAL) > 0) {
+            if (living.world.isRemote) {
+                living.setAbsorptionAmount(living.getDataManager().get(ENTITY_OVERHEAL));
+            }
+            living.setAbsorptionAmount(living.getAbsorptionAmount() - living.getMaxHealth() * 0.001666f);
+            if (!living.world.isRemote && living.ticksExisted % 4 == 0)
+                if (living.getAbsorptionAmount() <= 0) {
+                    living.getDataManager().set(ENTITY_OVERHEAL, -1f);
+                } else {
+                    living.getDataManager().set(ENTITY_OVERHEAL, living.getAbsorptionAmount());
+                }
+        }
+        living.world.profiler.endSection();
+    }
 
     @SubscribeEvent
     public void loadWorld(WorldEvent.Load event) {
@@ -1817,8 +1799,8 @@ public class TF2EventsCommon {
 
     public static class TF2WorldStorage implements ICapabilityProvider, INBTSerializable<NBTTagCompound> {
 
+        private final HashMap<UUID, PlayerPersistStorage> playerStorage = new HashMap<>();
         public int eventFlag;
-
         public World world;
         public HashMap<Entity, InboundDamage> damage = new HashMap<>();
         public ArrayList<BlockPos> banners = new ArrayList<>();
@@ -1829,7 +1811,6 @@ public class TF2EventsCommon {
         public MannCoBuilding.MapGen mannCoGenerator = new MannCoBuilding.MapGen();
         public MapGen tf2BaseGenerator = new ScatteredFeatureTF2Base.MapGen(null);
         public boolean silent;
-        private final HashMap<UUID, PlayerPersistStorage> playerStorage = new HashMap<>();
 
         /*@Override
         public void readFromNBT(NBTTagCompound nbt) {
