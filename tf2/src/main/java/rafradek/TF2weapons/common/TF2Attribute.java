@@ -553,9 +553,8 @@ public class TF2Attribute {
         return this;
     }
 
-    public TF2Attribute setNoCostReduce() {
+    public void setNoCostReduce() {
         this.fullCost = true;
-        return this;
     }
 
     public String getTranslatedString(float value, boolean withColor) {
