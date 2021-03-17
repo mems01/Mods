@@ -264,7 +264,7 @@ public class ItemPDA extends ItemFromData implements IItemSlotNumber, IItemOverl
 					gui.drawTexturedModalRect(resolution.getScaledWidth()/2-140 + i * 72, resolution.getScaledHeight()/2, 0, 64, 64, 64);
 					gui.drawTexturedModalRect(resolution.getScaledWidth()/2-132 + i * 72, resolution.getScaledHeight()/2+12, 208, 64+i*48, 48, 48);
 				}
-				else if (WeaponsCapability.get(player).getMetal() >= cost - 1){
+				else if (WeaponsCapability.get(player).getMetal() >= cost){
 					//gui.drawString(gui.getFontRenderer(), gui.getFontRenderer().getStringWidth(Integer.toString(cost));
 					gui.drawTexturedModalRect(resolution.getScaledWidth()/2-140 + i * 72, resolution.getScaledHeight()/2, i == 4 ? 0 : i*64, 0, 64, 64);
 				}
