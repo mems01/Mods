@@ -545,14 +545,11 @@ public class TF2weapons {
                 .setUnlocalizedName("blockOverhead"), TF2weapons.MOD_ID + ":overhead_door");
         registerBlock(blockRobotDeploy = new BlockRobotDeploy().setCreativeTab(tabsurvivaltf2).setHardness(3.0F).setResistance(5.0F)
                 .setUnlocalizedName("blockRobotDeploy"), TF2weapons.MOD_ID + ":robot_deploy");
-        registerBlock(blockResupplyCabinet = new BlockResupplyCabinet().setCreativeTab(tabarenatf2).setBlockUnbreakable().setResistance(6000000F)
-                .setUnlocalizedName("blockResupplyCabinet"), TF2weapons.MOD_ID + ":resupply_cabinet");
-        registerBlock(blockCapturePoint = new BlockCapturePoint().setCreativeTab(tabarenatf2).setBlockUnbreakable().setResistance(6000000F)
-                .setUnlocalizedName("blockCapturePoint"), TF2weapons.MOD_ID + ":capture_point");
-        registerBlock(blockConfigure = new BlockGameConfigure().setCreativeTab(tabarenatf2).setBlockUnbreakable().setResistance(6000000F)
-                .setUnlocalizedName("blockGameConfigure"), TF2weapons.MOD_ID + ":game_configure");
-        ForgeRegistries.BLOCKS.register(blockProp = new BlockProp(Material.WOOD, MapColor.GOLD).setHardness(0.75F).setResistance(2.0F)
-                .setUnlocalizedName("blockProp").setRegistryName(TF2weapons.MOD_ID + ":prop_block"));
+        ForgeRegistries.BLOCKS.register(blockResupplyCabinet = new BlockResupplyCabinet().setCreativeTab(tabarenatf2).setBlockUnbreakable().setResistance(6000000F)
+                .setUnlocalizedName("blockResupplyCabinet").setRegistryName(TF2weapons.MOD_ID + ":resupply_cabinet"));
+        ForgeRegistries.BLOCKS.register(blockCapturePoint = new BlockCapturePoint().setCreativeTab(tabarenatf2).setBlockUnbreakable().setResistance(6000000F).setUnlocalizedName("blockCapturePoint").setRegistryName(TF2weapons.MOD_ID + ":capture_point"));
+        ForgeRegistries.BLOCKS.register(blockConfigure = new BlockGameConfigure().setCreativeTab(tabarenatf2).setBlockUnbreakable().setResistance(6000000F).setUnlocalizedName("blockGameConfigure").setRegistryName(TF2weapons.MOD_ID + ":game_configure"));
+        ForgeRegistries.BLOCKS.register(blockProp = new BlockProp(Material.WOOD, MapColor.GOLD).setHardness(0.75F).setResistance(2.0F).setUnlocalizedName("blockProp").setRegistryName(TF2weapons.MOD_ID + ":prop_block"));
 
         OreDictionary.registerOre("oreCopper", blockCopperOre);
         OreDictionary.registerOre("oreLead", blockLeadOre);
