@@ -89,7 +89,7 @@ public class EntityTarget extends EntityArmorStand {
     {
         if (!this.world.isRemote && !this.isDead)
         {
-            if (DamageSource.OUT_OF_WORLD.equals(source) || (source.getTrueSource() instanceof EntityLivingBase && source.getDamageType().equals("player")))
+            if (DamageSource.OUT_OF_WORLD.equals(source) || (source.getTrueSource() instanceof EntityLivingBase && source.getDamageType().equals("player") && source.getTrueSource().isSneaking()))
             {
             	source.setExplosion();
                 Block.spawnAsEntity(world, getPosition().up(), new ItemStack(TF2weapons.itemTarget));
