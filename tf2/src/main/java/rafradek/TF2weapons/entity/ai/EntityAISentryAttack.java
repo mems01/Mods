@@ -42,7 +42,7 @@ public class EntityAISentryAttack extends EntityAIBase {
 		if (owner == null || owner.isDead)
 			owner = this.host;
 		double lookX = target.posX;
-		double lookY = target.posY + target.height / 2;
+		double lookY = target.posY + target.height;
 		double lookZ = target.posZ;
 		if (this.lockTarget)
 			this.host.getLookHelper().setLookPosition(lookX, lookY, lookZ, 30, 75);
