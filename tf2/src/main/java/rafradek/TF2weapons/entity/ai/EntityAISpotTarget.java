@@ -72,9 +72,6 @@ public class EntityAISpotTarget extends EntityAIBase {
 					if (target instanceof EntityLivingBase) {
 						double d0 = EntityAISpotTarget.this.getTargetDistance();
 
-						if (target.isSneaking())
-							d0 *= 0.800000011920929D;
-
 						if (target instanceof EntityPlayer && target.isInvisible()) {
 							float f = ((EntityPlayer) target).getArmorVisibility();
 

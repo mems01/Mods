@@ -1,7 +1,0 @@
-{
-  "resupply_cabinet": {
-    "Name": "PICKUPYO",
-    "Class": "tf2arena",
-    "Render": "rafradek_tf2_weapons:crate"
-  }
-}

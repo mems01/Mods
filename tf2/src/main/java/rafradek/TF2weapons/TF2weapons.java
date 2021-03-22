@@ -325,7 +325,6 @@ public class TF2weapons {
             TF2Util.extractData("weapons/weapons.json", new File(this.weaponDir, "Weapons.json"), file);
             TF2Util.extractData("weapons/cosmetics.json", new File(this.weaponDir, "Cosmetics.json"), file);
             TF2Util.extractData("weapons/crates.json", new File(this.weaponDir, "Crates.json"), file);
-            TF2Util.extractData("weapons/pickup.json", new File(this.weaponDir, "Pickup.json"), file);
             TF2Util.extractData("robots/robot_squad.json", squadFile, file);
         }
 
