@@ -190,7 +190,7 @@ public class EntitySentry extends EntityBuilding {
                     this.getOwner().posY + this.getOwner().getEyeHeight() + lookVec.y,
                     this.getOwner().posZ + lookVec.z, false, 0.01f, false).get(0);
             this.getLookHelper().setLookPosition(trace.hitVec.x, trace.hitVec.y,
-                    trace.hitVec.z, 30, 75);
+                    trace.hitVec.z, 30, 90);
         }
         if (this.getAttackTarget() != null && (!this.getAttackTarget().isEntityAlive() || !this.canEntityBeSeen(this.getAttackTarget())))
             this.setAttackTarget(null);
@@ -205,7 +205,7 @@ public class EntitySentry extends EntityBuilding {
     @Override
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(0D);
+        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(41D);
         // this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValu(1.6D);
     }
 
