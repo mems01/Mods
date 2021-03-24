@@ -1363,8 +1363,8 @@ public class TF2Util {
 		switch (facing) {
 			case UP: return new Vec2f(0,-90);
 			case DOWN: return new Vec2f(0,90);
+			default : return new Vec2f(0, 0);
 		}
-		return null;
 	}
 	
 	public static void stomp(EntityLivingBase living) {

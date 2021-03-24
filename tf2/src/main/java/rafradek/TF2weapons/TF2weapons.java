@@ -944,7 +944,7 @@ public class TF2weapons {
                 EnumFacing enumfacing = source.getBlockState().getValue(BlockDispenser.FACING);
                 dummyEnt.setPosition(iposition.getX(), iposition.getY(), iposition.getZ());
                 Vec2f rot = TF2Util.getAngleFromFacing(enumfacing);
-                dummyEnt.rotationYawHead = Objects.requireNonNull(rot).x;
+                dummyEnt.rotationYawHead = rot.x;
                 dummyEnt.rotationPitch = rot.y;
                 dummyEnt.world = world;
                 dummyEnt.setHeldItem(EnumHand.MAIN_HAND, stack);
