@@ -119,11 +119,8 @@ import rafradek.TF2weapons.world.gen.structure.ScatteredFeatureTF2Base;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.UUID;
 import java.util.concurrent.Callable;
 import java.util.zip.GZIPOutputStream;
 
@@ -947,7 +944,7 @@ public class TF2weapons {
                 EnumFacing enumfacing = source.getBlockState().getValue(BlockDispenser.FACING);
                 dummyEnt.setPosition(iposition.getX(), iposition.getY(), iposition.getZ());
                 Vec2f rot = TF2Util.getAngleFromFacing(enumfacing);
-                dummyEnt.rotationYawHead = rot.x;
+                dummyEnt.rotationYawHead = Objects.requireNonNull(rot).x;
                 dummyEnt.rotationPitch = rot.y;
                 dummyEnt.world = world;
                 dummyEnt.setHeldItem(EnumHand.MAIN_HAND, stack);
