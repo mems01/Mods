@@ -7,8 +7,6 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
-import rafradek.TF2weapons.TF2ConfigVars;
-import rafradek.TF2weapons.entity.EntityDummy;
 
 public class EntityCleaver extends EntityProjectileSimple {
 

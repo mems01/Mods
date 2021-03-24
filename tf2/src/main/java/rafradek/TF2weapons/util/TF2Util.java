@@ -1424,8 +1424,8 @@ public class TF2Util {
 	
 	public static Vec2f getAngleFromFacing(EnumFacing facing) {
 		switch (facing) {
-		case UP: return new Vec2f(0,-90);
-		case DOWN: return new Vec2f(0,90);
+		case UP: return new Vec2f(0,90);
+		case DOWN: return new Vec2f(0,-90);
 		default : return new Vec2f(facing.getHorizontalAngle(),0);
 		}
 	}
