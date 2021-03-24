@@ -941,11 +941,7 @@ public class TF2weapons {
             public ItemStack dispenseStack(IBlockSource source, ItemStack stack) {
                 World world = source.getWorld();
                 IPosition iposition = BlockDispenser.getDispensePosition(source);
-                EnumFacing enumfacing = source.getBlockState().getValue(BlockDispenser.FACING);
                 dummyEnt.setPosition(iposition.getX(), iposition.getY(), iposition.getZ());
-                Vec2f rot = TF2Util.getAngleFromFacing(enumfacing);
-                dummyEnt.rotationYawHead = rot.x;
-                dummyEnt.rotationPitch = rot.y;
                 dummyEnt.world = world;
                 dummyEnt.setHeldItem(EnumHand.MAIN_HAND, stack);
                 ((ItemUsable) stack.getItem()).use(stack, dummyEnt, world, EnumHand.MAIN_HAND, null);
