@@ -47,7 +47,7 @@ public class EntityAISentryAttack extends EntityAIBase {
 		if (this.lockTarget)
 			this.host.getLookHelper().setLookPosition(lookX, lookY, lookZ, 30, 90);
 		else
-			this.host.getLookHelper().setLookPosition(lookX, lookY, lookZ, (5f + this.host.getLevel() * 2.25f) * (this.host.isMini() ? 1.35f : 1f), 50);
+			this.host.getLookHelper().setLookPosition(lookX, lookY, lookZ, (5f + this.host.getLevel() * 2.25f) * (this.host.isMini() ? 1.35f : 1f), 90);
 		if (TF2Util.lookingAt(this.host, 24, lookX, lookY, lookZ)) {
 			this.lockTarget = true;
 			this.host.shootBullet(owner);
