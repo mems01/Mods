@@ -170,11 +170,9 @@ public class EntitySentry extends EntityBuilding {
         this.tasks.addTask(2, new EntityAISentryIdle(this));
     }
 
-    int tick = 0;
     @Override
     public void onLivingUpdate() {
 
-        tick++;
         if (!this.world.isRemote && this.ticksExisted == 1)
             this.getAttackFlags();
         if (this.rotationDefault == 0)
@@ -196,21 +194,6 @@ public class EntitySentry extends EntityBuilding {
         }
         if (this.getAttackTarget() != null && (!this.getAttackTarget().isEntityAlive() || !this.canEntityBeSeen(this.getAttackTarget())))
             this.setAttackTarget(null);
-
-        if(tick >= 1200) {
-            try {
-                EntityProjectileBase proj = MapList.projectileClasses.get(ItemFromData.getData(this.sentryRocket).getString(PropertyType.PROJECTILE)).getConstructor(World.class).newInstance(this.world);
-                proj.initProjectile(this, EnumHand.MAIN_HAND, this.sentryRocket);
-                proj.shootingEntity = owner;
-                proj.usedWeapon = sentryRocket;
-                proj.sentry = this;
-                world.removeEntity(proj);
-                tick = 0;
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        }
         super.onLivingUpdate();
     }
 
