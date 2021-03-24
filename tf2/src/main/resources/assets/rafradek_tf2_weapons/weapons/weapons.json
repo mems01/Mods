@@ -3359,10 +3359,11 @@
     "Cost": 22,
     "Stock": false,
     "Attributes": {
-      "FireRateBonus": 1.15,
+      "FireRateBonus": 0.85,
       "RepairRatePenalty": 1.2,
       "DamagePenalty": 0.75,
-      "DamageBuildingPenalty": 0.67
+      "DamageBuildingPenalty": 0.67,
+      "ConstructionRateBonus": 1.4
     }
   },
   "blutsauger": {
