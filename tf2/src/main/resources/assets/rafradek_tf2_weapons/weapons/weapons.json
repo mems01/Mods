@@ -866,7 +866,7 @@
     "Cost": 9,
     "Stock": false,
     "Attributes": {
-      "MedicHealingDecreased": 0.1,
+      "MedicHealingDecreased": 1.9,
       "DamageHealthBonus": 1.65,
       "DestroyBlock": 1.27
     }
@@ -883,7 +883,7 @@
     "Attributes": {
       "MoveSpeedHealthBonus": 0.1,
       "MarkForDeathSelf": 1,
-      "MedicHealingDecreased": 0.1,
+      "MedicHealingDecreased": 1.9,
       "DestroyBlock": 1.27
     }
   },
