@@ -27,13 +27,6 @@ public class ItemAmmo extends Item {
 		this.setHasSubtypes(true);
 	}
 
-	public String getType(ItemStack stack) {
-		return AMMO_TYPES[stack.getMetadata()];
-	}
-
-	public int getTypeInt(ItemStack stack) {
-		return stack.getMetadata();
-	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -41,10 +34,6 @@ public class ItemAmmo extends Item {
 		return TF2weapons.tabsurvivaltf2;
 	}
 
-	@Override
-	public String getUnlocalizedName(ItemStack stack) {
-		return super.getUnlocalizedName(stack) + stack.getMetadata();
-	}
 
 	@Override
 	public void getSubItems(CreativeTabs par2CreativeTabs, NonNullList<ItemStack> par3List) {
