@@ -404,7 +404,7 @@ public class TF2Attribute {
         new TF2Attribute(240, "DamageWhenDisguisedBonus", "Damage When Disguised", Type.ADDITIVE, 0f, State.POSITIVE);
         new TF2Attribute(241, "ProvideWhenActive", "Provide When Active", Type.ADDITIVE, 0f, State.NEUTRAL);
         new TF2Attribute(242, "ReverseBuilding", "ReverseBuilding", Type.ADDITIVE, 0f, State.POSITIVE);
-        new TF2Attribute(243, "HealthDegen", "Health Regen", Type.ADDITIVE, 0f, State.NEGATIVE);
+        new TF2Attribute(243, "HealthDegen", "Health Degen", Type.ADDITIVE, 0f, State.NEGATIVE);
 
 		/*new TF2Attribute(139, "ChargeStep", "Charge Step", Type.ADDITIVE, 0, State.POSITIVE,
 				SHIELD, 1f, 1, 250, 3);*/

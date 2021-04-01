@@ -18,7 +18,7 @@ import rafradek.TF2weapons.TF2weapons;
 
 public class ItemAmmo extends Item {
 
-	public static final String[] AMMO_TYPES = new String[] { "none", "shotgun", "minigun", "pistol", "revolver", "smg",
+	public static final String[] AMMO_TYPES = new String[] { "shotgun", "minigun", "pistol", "revolver", "smg",
 			"sniper", "rocket", "grenade", "syringe", "fire", "sticky", "medigun", "flare", "ball", "custom" };
 	public static final int[] AMMO_MAX_STACK = new int[] { 64, 64, 64, 64, 64, 64, 16, 32, 32, 64, 1, 32, 1, 64, 64, 64 };
 	public static ItemStack STACK_FILL;
@@ -28,7 +28,7 @@ public class ItemAmmo extends Item {
 	}
 
 	public String getType(ItemStack stack) {
-		return AMMO_TYPES[stack.getMetadata()];
+		return AMMO_TYPES[this.getTypeInt(stack)];
 	}
 
 	public int getTypeInt(ItemStack stack) {
@@ -41,6 +41,10 @@ public class ItemAmmo extends Item {
 		return TF2weapons.tabsurvivaltf2;
 	}
 
+	@Override
+	public String getUnlocalizedName(ItemStack stack) {
+		return "item.tf2ammo." + getType(stack);
+	}
 
 	@Override
 	public void getSubItems(CreativeTabs par2CreativeTabs, NonNullList<ItemStack> par3List) {
