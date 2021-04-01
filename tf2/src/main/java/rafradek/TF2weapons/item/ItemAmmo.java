@@ -27,6 +27,13 @@ public class ItemAmmo extends Item {
 		this.setHasSubtypes(true);
 	}
 
+	public String getType(ItemStack stack) {
+		return AMMO_TYPES[stack.getMetadata()];
+	}
+
+	public int getTypeInt(ItemStack stack) {
+		return stack.getMetadata();
+	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
