@@ -14,13 +14,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.internal.FMLNetworkHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.IItemHandler;
 import rafradek.TF2weapons.TF2weapons;
-import rafradek.TF2weapons.common.TF2Attribute;
-import rafradek.TF2weapons.entity.building.EntityDispenser;
-import rafradek.TF2weapons.entity.mercenary.EntityTF2Character;
-import rafradek.TF2weapons.util.PropertyType;
 
 public class ItemAmmo extends Item {
 
@@ -34,15 +28,11 @@ public class ItemAmmo extends Item {
 	}
 
 	public String getType(ItemStack stack) {
-		return AMMO_TYPES[this.getTypeInt(stack)];
+		return AMMO_TYPES[stack.getMetadata()];
 	}
 
 	public int getTypeInt(ItemStack stack) {
 		return stack.getMetadata();
-	}
-
-	public boolean isValidForWeapon(ItemStack ammo, ItemStack weapon) {
-		return getTypeInt(ammo) == ItemFromData.getData(weapon).getInt(PropertyType.AMMO_TYPE);
 	}
 
 	@Override
@@ -53,7 +43,7 @@ public class ItemAmmo extends Item {
 
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
-		return "item.tf2ammo." + getType(stack);
+		return super.getUnlocalizedName(stack) + stack.getMetadata();
 	}
 
 	@Override
@@ -79,23 +69,6 @@ public class ItemAmmo extends Item {
 			int left = Math.max(0, amount - stack.getCount());
 			stack.shrink(amount);
 			return left;
-
-			/*if (stack.isEmpty() && living instanceof EntityPlayer) {
-				
-				if (living.getCapability(TF2weapons.INVENTORY_CAP, null).getStackInSlot(3) != null){
-					IItemHandlerModifiable invAmmo = (IItemHandlerModifiable) living.getCapability(TF2weapons.INVENTORY_CAP, null).getStackInSlot(3)
-							.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
-					
-					for (int i = 0; i < invAmmo.getSlots(); i++) {
-						ItemStack stackInv = invAmmo.getStackInSlot(i);
-						if (stack == stackInv) {
-							invAmmo.setStackInSlot(i, null);
-							return;
-						}
-					}
-				}
-				((EntityPlayer) living).inventory.deleteStack(stack);
-			}*/
 		}
 		return 0;
 	}
@@ -105,7 +78,7 @@ public class ItemAmmo extends Item {
 	public ActionResult<ItemStack> onItemRightClick( World world, EntityPlayer living, EnumHand hand) {
 		if (!world.isRemote)
 			FMLNetworkHandler.openGui(living, TF2weapons.instance, 0, world, 0, 0, 0);
-		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, living.getHeldItem(hand));
+		return new ActionResult<>(EnumActionResult.SUCCESS, living.getHeldItem(hand));
 	}
 	
 	public int getAmount(ItemStack stack) {
